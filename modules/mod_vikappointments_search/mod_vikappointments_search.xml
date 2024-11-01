@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<extension type="module" version="3.0.0" client="site" method="upgrade">
+	<name>VIKAPPOINTMENTS_SEARCH_MODULE_TITLE</name>
+	<author>Extensionsforjoomla.com</author>
+	<creationDate>April 19, 2024</creationDate>
+	<copyright>Copyright (C) 2024 Extensionsforjoomla.com. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>dev@extensionsforjoomla.com</authorEmail>
+	<authorUrl>https://extensionsforjoomla.com</authorUrl>
+	<version>1.6</version>
+	<description>VIKAPPOINTMENTS_SEARCH_MODULE_DESCRIPTION</description>
+ 
+	<files>
+		<filename module="mod_vikappointments_search">mod_vikappointments_search.php</filename>
+		<filename>mod_vikappointments_search.css</filename>
+		<filename>index.html</filename>
+		<folder>libraries</folder>
+		<folder>tmpl</folder>
+	</files>
+
+	<languages>
+		<language tag="en-GB">languages/en-GB.mod_vikappointments_search.ini</language>
+	</languages>
+
+	<config>
+		<fields name="params">
+
+			<fieldset name="basic">
+
+				<field
+					name="orientation"
+					type="list"
+					default="vertical"
+					label="VAP_SEARCH_ORIENTATION"
+					description="VAP_SEARCH_ORIENTATION_DESC"
+				>
+					<option value="vertical">VAP_SEARCH_ORI_VERTICAL</option>
+					<option value="horizontal">VAP_SEARCH_ORI_HORIZONTAL</option>
+				</field>
+
+				<field
+					name="id_employee"
+					type="sql"
+					default=""
+					label="VAP_SEARCH_EMPLOYEE_FILTER"
+					description="VAP_SEARCH_EMPLOYEE_FILTER_DESC"
+					query="SELECT `e`.`id`, `e`.`nickname` FROM `#__vikappointments_employee` AS `e` ORDER BY `e`.`nickname` ASC;" 
+					key_field="id"
+					value_field="nickname"
+					layout="joomla.form.field.list-fancy-select"
+				>
+					<option>VAP_SEARCH_EMPLOYEE_FILTER_IGNORE</option>
+				</field>
+
+				<field
+					name="advselect"
+					type="list"
+					default="1"
+					label="VAP_SEARCH_ADVANCED_SELECT"
+					description="VAP_SEARCH_ADVANCED_SELECT_DESC"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field
+					name="itemid"
+					type="menuitem"
+					default=""
+					label="VAP_SEARCH_MENU_ITEM"
+					description="VAP_SEARCH_MENU_ITEM_DESC"
+				>
+					<option value="">COM_MODULES_OPTION_SELECT_MENU_ITEM</option>
+				</field>
+
+			</fieldset>
+
+			<fieldset name="advanced">
+
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+					class="form-select"
+				/>
+
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					default=""
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+				/>
+
+			</fieldset>
+
+		</fields>
+	</config>
+
+	<updateservers>
+		<server type="extension" name="VikAppointments Modules Update Site" priority="1">https://extensionsforjoomla.com/vikapi/?task=joomla.updateserver&amp;sku=vap-search</server>
+	</updateservers>
+
+</extension>
